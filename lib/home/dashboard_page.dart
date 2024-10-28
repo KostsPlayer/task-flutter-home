@@ -11,44 +11,53 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dashboard - Tabel Penjualan'),
+        title: Text('Dashboard - Penjualan'),
       ),
       body: Column(
         children: [
           Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: DataTable(
-                columns: [
-                  DataColumn(label: Text('No Faktur Penjualan')),
-                  DataColumn(label: Text('Tanggal Penjualan')),
-                  DataColumn(label: Text('Nama Customer')),
-                  DataColumn(label: Text('Jumlah Barang')),
-                  DataColumn(label: Text('Total Penjualan')),
-                  DataColumn(label: Text('Aksi')),
-                ],
-                rows: salesData.asMap().entries.map((entry) {
-                  int index = entry.key;
-                  Map<String, String> data = entry.value;
-                  return DataRow(cells: [
-                    DataCell(Text(data['No Faktur Penjualan']!)),
-                    DataCell(Text(data['Tanggal Penjualan']!)),
-                    DataCell(Text(data['Nama Customer']!)),
-                    DataCell(Text(data['Jumlah Barang']!)),
-                    DataCell(Text(data['Total Penjualan']!)),
-                    DataCell(Row(
+            child: ListView.builder(
+              padding: EdgeInsets.all(10),
+              itemCount: salesData.length,
+              itemBuilder: (context, index) {
+                Map<String, String> data = salesData[index];
+                return Card(
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                  elevation: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        IconButton(
-                          icon: Icon(Icons.delete, color: Colors.red),
-                          onPressed: () {
-                            _showDeleteConfirmation(context, index);
-                          },
+                        Text(
+                          'No Faktur: ${data['No Faktur Penjualan']}',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        Text('Nama Customer: ${data['Nama Customer']}'),
+                        Text('Jumlah Barang: ${data['Jumlah Barang']}'),
+                        Text('Total Penjualan: ${data['Total Penjualan']}'),
+                        Text('Tanggal: ${data['Tanggal Penjualan']}'),
+                        SizedBox(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.delete, color: Colors.red),
+                              onPressed: () {
+                                _showDeleteConfirmation(context, index);
+                              },
+                            ),
+                          ],
                         ),
                       ],
-                    )),
-                  ]);
-                }).toList(),
-              ),
+                    ),
+                  ),
+                );
+              },
             ),
           ),
           SizedBox(height: 20),
