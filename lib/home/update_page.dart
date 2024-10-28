@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'sales_data.dart';
 
 class SelectUpdatePage extends StatelessWidget {
+  const SelectUpdatePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Select for Update'),
+        title: const Text('Select for Update'),
       ),
       body: ListView.builder(
         itemCount: salesData.length,
@@ -14,7 +16,7 @@ class SelectUpdatePage extends StatelessWidget {
           return ListTile(
             title: Text(salesData[index]['No Faktur Penjualan']!),
             subtitle: Text(salesData[index]['Nama Customer']!),
-            trailing: Icon(Icons.edit),
+            trailing: const Icon(Icons.edit),
             onTap: () {
               Navigator.push(
                 context,
@@ -37,7 +39,7 @@ class UpdatePage extends StatelessWidget {
   final TextEditingController jumlahController;
   final TextEditingController totalController;
 
-  UpdatePage({required this.index})
+  UpdatePage({super.key, required this.index})
       : fakturController = TextEditingController(
             text: salesData[index]['No Faktur Penjualan']),
         tanggalController =
@@ -53,7 +55,7 @@ class UpdatePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Update Penjualan'),
+        title: const Text('Update Penjualan'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -61,20 +63,23 @@ class UpdatePage extends StatelessWidget {
           children: [
             TextField(
                 controller: fakturController,
-                decoration: InputDecoration(labelText: 'No Faktur Penjualan')),
+                decoration:
+                    const InputDecoration(labelText: 'No Faktur Penjualan')),
             TextField(
                 controller: tanggalController,
-                decoration: InputDecoration(labelText: 'Tanggal Penjualan')),
+                decoration:
+                    const InputDecoration(labelText: 'Tanggal Penjualan')),
             TextField(
                 controller: customerController,
-                decoration: InputDecoration(labelText: 'Nama Customer')),
+                decoration: const InputDecoration(labelText: 'Nama Customer')),
             TextField(
                 controller: jumlahController,
-                decoration: InputDecoration(labelText: 'Jumlah Barang')),
+                decoration: const InputDecoration(labelText: 'Jumlah Barang')),
             TextField(
                 controller: totalController,
-                decoration: InputDecoration(labelText: 'Total Penjualan')),
-            SizedBox(height: 20),
+                decoration:
+                    const InputDecoration(labelText: 'Total Penjualan')),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 salesData[index] = {
@@ -86,14 +91,14 @@ class UpdatePage extends StatelessWidget {
                 };
                 Navigator.pop(context);
               },
-              child: Text('Update'),
+              child: const Text('Update'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('Kembali'),
+              child: const Text('Kembali'),
             ),
           ],
         ),

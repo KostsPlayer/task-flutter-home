@@ -8,11 +8,13 @@ class AddPage extends StatelessWidget {
   final TextEditingController jumlahController = TextEditingController();
   final TextEditingController totalController = TextEditingController();
 
+  AddPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add - Tambah Penjualan'),
+        title: const Text('Add - Tambah Penjualan'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -20,20 +22,23 @@ class AddPage extends StatelessWidget {
           children: [
             TextField(
                 controller: fakturController,
-                decoration: InputDecoration(labelText: 'No Faktur Penjualan')),
+                decoration:
+                    const InputDecoration(labelText: 'No Faktur Penjualan')),
             TextField(
                 controller: tanggalController,
-                decoration: InputDecoration(labelText: 'Tanggal Penjualan')),
+                decoration:
+                    const InputDecoration(labelText: 'Tanggal Penjualan')),
             TextField(
                 controller: customerController,
-                decoration: InputDecoration(labelText: 'Nama Customer')),
+                decoration: const InputDecoration(labelText: 'Nama Customer')),
             TextField(
                 controller: jumlahController,
-                decoration: InputDecoration(labelText: 'Jumlah Barang')),
+                decoration: const InputDecoration(labelText: 'Jumlah Barang')),
             TextField(
                 controller: totalController,
-                decoration: InputDecoration(labelText: 'Total Penjualan')),
-            SizedBox(height: 20),
+                decoration:
+                    const InputDecoration(labelText: 'Total Penjualan')),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 salesData.add({
@@ -45,14 +50,14 @@ class AddPage extends StatelessWidget {
                 });
                 Navigator.pop(context);
               },
-              child: Text('Submit'),
+              child: const Text('Submit'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('Kembali'),
+              child: const Text('Kembali'),
             ),
           ],
         ),

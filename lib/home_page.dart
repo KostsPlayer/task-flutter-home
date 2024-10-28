@@ -4,16 +4,17 @@ import './home/dashboard_page.dart';
 import './home/add_page.dart';
 import './home/update_page.dart';
 import './home/login_page.dart';
-import './home/sales_data.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80),
+        preferredSize: const Size.fromHeight(80),
         child: AppBar(
-          title: Padding(
+          title: const Padding(
             padding: EdgeInsets.only(top: 25.0),
             child: Text(
               'Home',
@@ -33,19 +34,19 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment:
               CrossAxisAlignment.start, // Sesuaikan posisi teks ke kiri
           children: <Widget>[
-            Text(
+            const Text(
               'NPM  : 714220001', // Teks tambahan pada body
               style: TextStyle(
                 fontSize: 16, // Sesuaikan ukuran teks
               ),
             ),
-            Text(
+            const Text(
               'Name : Muhammad Azka Nuril Islami', // Teks tambahan pada body
               style: TextStyle(
                 fontSize: 16, // Sesuaikan ukuran teks
               ),
             ),
-            SizedBox(height: 20), // Jarak antara teks dan GridView
+            const SizedBox(height: 20), // Jarak antara teks dan GridView
             Expanded(
               child: GridView.count(
                 crossAxisCount: 2,
@@ -79,7 +80,7 @@ class HomePage extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(0), // Radius sudut button
         ),
-        padding: EdgeInsets.all(16), // Padding di dalam button
+        padding: const EdgeInsets.all(16), // Padding di dalam button
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -89,13 +90,13 @@ class HomePage extends StatelessWidget {
             size: 80,
             color: colorIcon,
           ),
-          SizedBox(height: 6), // Jarak antara icon dan text
+          const SizedBox(height: 6), // Jarak antara icon dan text
           Padding(
             padding: const EdgeInsets.symmetric(
                 horizontal: 8.0), // Padding horizontal pada teks
             child: Text(
               title,
-              style: TextStyle(fontSize: 22, color: Colors.black),
+              style: const TextStyle(fontSize: 22, color: Colors.black),
               textAlign: TextAlign.center, // Posisikan teks di tengah
             ),
           ),

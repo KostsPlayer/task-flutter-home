@@ -5,11 +5,13 @@ class LoginPage extends StatelessWidget {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  LoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: const Text('Login'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -17,14 +19,14 @@ class LoginPage extends StatelessWidget {
           children: [
             TextField(
               controller: usernameController,
-              decoration: InputDecoration(labelText: 'Username'),
+              decoration: const InputDecoration(labelText: 'Username'),
             ),
             TextField(
               controller: passwordController,
-              decoration: InputDecoration(labelText: 'Password'),
+              decoration: const InputDecoration(labelText: 'Password'),
               obscureText: true,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 String username = usernameController.text.trim();
@@ -34,12 +36,13 @@ class LoginPage extends StatelessWidget {
                   showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
-                      title: Text('Error'),
-                      content: Text('Username dan Password tidak boleh kosong'),
+                      title: const Text('Error'),
+                      content: const Text(
+                          'Username dan Password tidak boleh kosong'),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
-                          child: Text('OK'),
+                          child: const Text('OK'),
                         ),
                       ],
                     ),
@@ -48,26 +51,26 @@ class LoginPage extends StatelessWidget {
                   // Jika username dan password benar
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => HomePage()),
+                    MaterialPageRoute(builder: (context) => const HomePage()),
                   );
                 } else {
                   // Jika username atau password salah
                   showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
-                      title: Text('Error'),
-                      content: Text('Username atau Password salah'),
+                      title: const Text('Error'),
+                      content: const Text('Username atau Password salah'),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
-                          child: Text('OK'),
+                          child: const Text('OK'),
                         ),
                       ],
                     ),
                   );
                 }
               },
-              child: Text('Login'),
+              child: const Text('Login'),
             ),
           ],
         ),

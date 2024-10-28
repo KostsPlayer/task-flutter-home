@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'sales_data.dart';
 
 class DashboardPage extends StatefulWidget {
+  const DashboardPage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _DashboardPageState createState() => _DashboardPageState();
 }
 
@@ -11,18 +14,18 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dashboard - Penjualan'),
+        title: const Text('Dashboard - Penjualan'),
       ),
       body: Column(
         children: [
           Expanded(
             child: ListView.builder(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               itemCount: salesData.length,
               itemBuilder: (context, index) {
                 Map<String, String> data = salesData[index];
                 return Card(
-                  margin: EdgeInsets.symmetric(vertical: 10),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
                   elevation: 4,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -31,22 +34,22 @@ class _DashboardPageState extends State<DashboardPage> {
                       children: [
                         Text(
                           'No Faktur: ${data['No Faktur Penjualan']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text('Nama Customer: ${data['Nama Customer']}'),
                         Text('Jumlah Barang: ${data['Jumlah Barang']}'),
                         Text('Total Penjualan: ${data['Total Penjualan']}'),
                         Text('Tanggal: ${data['Tanggal Penjualan']}'),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             IconButton(
-                              icon: Icon(Icons.delete, color: Colors.red),
+                              icon: const Icon(Icons.delete, color: Colors.red),
                               onPressed: () {
                                 _showDeleteConfirmation(context, index);
                               },
@@ -60,12 +63,12 @@ class _DashboardPageState extends State<DashboardPage> {
               },
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            child: Text('Kembali'),
+            child: const Text('Kembali'),
           ),
         ],
       ),
@@ -77,7 +80,7 @@ class _DashboardPageState extends State<DashboardPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Konfirmasi Hapus'),
+          title: const Text('Konfirmasi Hapus'),
           content: Text(
               'Apakah Anda yakin ingin menghapus faktur ${salesData[index]['No Faktur Penjualan']}?'),
           actions: [
@@ -85,14 +88,14 @@ class _DashboardPageState extends State<DashboardPage> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Batal'),
+              child: const Text('Batal'),
             ),
             TextButton(
               onPressed: () {
                 _deleteData(index);
                 Navigator.of(context).pop();
               },
-              child: Text('Hapus'),
+              child: const Text('Hapus'),
             ),
           ],
         );
